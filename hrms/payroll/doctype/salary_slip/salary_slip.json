@@ -167,10 +167,11 @@
    "read_only": 1
   },
   {
+   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Draft\nSubmitted\nCancelled",
+   "options": "Pending\nDraft\nSubmitted\nCancelled",
    "read_only": 1
   },
   {
@@ -727,7 +728,7 @@
  "idx": 9,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-27 13:10:34.358893",
+ "modified": "2024-07-24 15:23:33.897424",
  "modified_by": "Administrator",
  "module": "Payroll",
  "name": "Salary Slip",

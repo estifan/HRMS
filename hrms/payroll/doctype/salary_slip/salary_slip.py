@@ -235,7 +235,10 @@ class SalarySlip(TransactionBase):
 		revert_series_if_last(self.series, self.name)
 
 	def get_status(self):
-		if self.docstatus == 0:
+		status = "Pending"
+		if self.docstatus == 0 and self.workflow_status == "Pending":
+			status = "Pending"
+		elif self.docstatus == 0 and self.workflow_status == "Draft":
 			status = "Draft"
 		elif self.docstatus == 1:
 			status = "Submitted"
@@ -835,7 +838,7 @@ class SalarySlip(TransactionBase):
 		self.total_taxable_earnings = (
 			self.previous_taxable_earnings
 			+ self.current_structured_taxable_earnings
-			+ self.future_structured_taxable_earnings
+			# + self.future_structured_taxable_earnings
 			+ self.current_additional_earnings
 			+ self.other_incomes
 			+ self.unclaimed_taxable_benefits
@@ -858,9 +861,7 @@ class SalarySlip(TransactionBase):
 			self.current_taxable_earnings.taxable_earnings
 			+ self.current_taxable_earnings.amount_exempted_from_income_tax
 		)
-		self.future_structured_taxable_earnings_before_exemption = (
-			current_taxable_earnings_before_exemption * (ceil(self.remaining_sub_periods) - 1)
-		)
+		self.future_structured_taxable_earnings_before_exemption = 0.0
 
 		# get taxable_earnings, addition_earnings for current actual payment days
 		self.current_taxable_earnings_for_payment_days = self.get_taxable_earnings(
@@ -935,6 +936,14 @@ class SalarySlip(TransactionBase):
 
 	def compute_ctc(self):
 		if hasattr(self, "previous_taxable_earnings"):
+
+			print("self.previous_taxable_earnings_before_exemption: ", self.previous_taxable_earnings_before_exemption)
+			print("self.current_structured_taxable_earnings_before_exemption: ", self.current_structured_taxable_earnings_before_exemption)
+			print("self.future_structured_taxable_earnings_before_exemption: ", self.future_structured_taxable_earnings_before_exemption)
+			print("self.current_additional_earnings: ", self.current_additional_earnings)
+			print("self.other_incomes: ", self.other_incomes)
+			print("self.unclaimed_taxable_benefits: ", self.unclaimed_taxable_benefits)
+			print("self.non_taxable_earnings: ", self.non_taxable_earnings)
 
 			return (
 
@@ -1481,7 +1490,10 @@ class SalarySlip(TransactionBase):
 
 		self.current_structured_tax_amount = (
 			self.total_structured_tax_amount - self.previous_total_paid_taxes
-		) / self.remaining_sub_periods
+		)
+		# self.current_structured_tax_amount = (
+		# 	self.total_structured_tax_amount - self.previous_total_paid_taxes
+		# ) / self.remaining_sub_periods
 
 		# Total taxable earnings with additional earnings with full tax
 		self.full_tax_on_additional_earnings = 0.0
@@ -2126,6 +2138,10 @@ def calculate_tax_by_tax_slab(
 		if annual_taxable_earning >= slab.from_amount and annual_taxable_earning <= slab.to_amount:
 			if cond:
 				tax_amount += (annual_taxable_earning * slab.percent_deduction * 0.01) + float(cond)
+				print("tax_amount: ",tax_amount)
+				print("annual_taxable_earning: ",annual_taxable_earning)
+				print("slab.percent_deduction: ",slab.percent_deduction * 0.01)
+				print("cond: ",cond)
 			else:
 				tax_amount += annual_taxable_earning * slab.percent_deduction * 0.01
 

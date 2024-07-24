@@ -16,6 +16,7 @@
   "is_carry_forward",
   "is_lwp",
   "is_ppl",
+  "biannual_increment",
   "fraction_of_daily_salary_per_leave",
   "is_optional_leave",
   "allow_negative",
@@ -168,7 +169,7 @@
    "fieldname": "rounding",
    "fieldtype": "Select",
    "label": "Rounding",
-   "options": "\n0.25\n0.5\n1.0"
+   "options": "\n0.25\n0.5\n1.0\n1.33\n0.33"
   },
   {
    "depends_on": "is_carry_forward",
@@ -229,12 +230,18 @@
    "fieldtype": "Int",
    "label": "Non-Encashable Leaves",
    "non_negative": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "biannual_increment",
+   "fieldtype": "Check",
+   "label": "biannual increment is applicable"
   }
  ],
  "icon": "fa fa-flag",
  "idx": 1,
  "links": [],
- "modified": "2024-03-27 13:10:02.014828",
+ "modified": "2024-07-12 14:07:10.328401",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Type",

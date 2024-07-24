@@ -129,14 +129,10 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "employee",
-   "fetch_from": "parent_goal.kra",
    "fieldname": "kra",
    "fieldtype": "Link",
    "label": "KRA",
-   "mandatory_depends_on": "eval: !doc.parent_goal && doc.appraisal_cycle",
-   "options": "KRA",
-   "read_only_depends_on": "eval: doc.parent_goal"
+   "options": "KRA"
   },
   {
    "allow_in_quick_entry": 1,
@@ -213,8 +209,13 @@
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
- "links": [],
- "modified": "2024-03-27 13:09:45.520429",
+ "links": [
+  {
+   "link_doctype": "Task",
+   "link_fieldname": "goal"
+  }
+ ],
+ "modified": "2024-07-22 08:21:40.747255",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Goal",

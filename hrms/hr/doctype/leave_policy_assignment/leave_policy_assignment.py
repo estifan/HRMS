@@ -353,6 +353,7 @@ def get_leave_type_details():
 			"expire_carry_forwarded_leaves_after_days",
 			"earned_leave_frequency",
 			"rounding",
+			"biannual_increment",
 		],
 	)
 	for d in leave_types:

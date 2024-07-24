@@ -387,7 +387,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-30 14:35:03.156594",
+ "modified": "2024-06-17 09:20:19.573987",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
@@ -398,7 +398,7 @@
  "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [],
- "sequence_id": 10.0,
+ "sequence_id": 9.0,
  "shortcuts": [
   {
    "format": "{} Open",

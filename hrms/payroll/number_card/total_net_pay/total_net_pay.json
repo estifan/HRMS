@@ -1,0 +1,22 @@
+{
+ "creation": "2024-06-25 08:56:40.952288",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "filters_json": "{\"from_date\":\"2024-06-01\",\"to_date\":\"2024-06-30\",\"currency\":\"ETB\",\"company\":\"Total Tech Solutions Providers\",\"docstatus\":\"Submitted\"}",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "label": "Total Net Pay",
+ "modified": "2024-06-25 08:56:41.010631",
+ "modified_by": "Administrator",
+ "module": "Payroll",
+ "name": "Total Net Pay",
+ "owner": "Administrator",
+ "report_field": "net_pay",
+ "report_function": "Sum",
+ "report_name": "Payroll Report for Jun 1-30, 2024",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Report"
+}
