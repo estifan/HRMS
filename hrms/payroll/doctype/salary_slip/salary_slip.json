@@ -98,7 +98,8 @@
   "bank_name",
   "bank_account_no",
   "leave_details_section",
-  "leave_details"
+  "leave_details",
+  "absent_time"
  ],
  "fields": [
   {
@@ -722,13 +723,21 @@
    "fieldname": "earning_deduction_sb",
    "fieldtype": "Section Break",
    "oldfieldtype": "Section Break"
+  },
+  {
+   "fetch_if_empty": 1,
+   "fieldname": "absent_time",
+   "fieldtype": "Link",
+   "label": "Lateness Duration",
+   "options": "Employee",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 9,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-24 15:23:33.897424",
+ "modified": "2024-08-21 10:20:42.507372",
  "modified_by": "Administrator",
  "module": "Payroll",
  "name": "Salary Slip",

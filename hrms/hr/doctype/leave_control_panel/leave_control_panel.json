@@ -77,8 +77,8 @@
    "width": "50%"
   },
   {
-   "default": "Today",
    "depends_on": "eval:doc.dates_based_on != 'Joining Date'",
+   "fetch_from": "leave_period.from_date",
    "fieldname": "from_date",
    "fieldtype": "Date",
    "label": "From Date",
@@ -86,10 +86,11 @@
    "read_only_depends_on": "eval:doc.dates_based_on == 'Leave Period'"
   },
   {
+   "fetch_from": "leave_period.to_date",
    "fieldname": "to_date",
    "fieldtype": "Date",
    "label": "To Date",
-   "mandatory_depends_on": "eval:doc.dates_based_on != 'Leave Period'",
+   "mandatory_depends_on": "eval:doc.dates_based_on == 'Leave Period'",
    "read_only_depends_on": "eval:doc.dates_based_on == 'Leave Period'"
   },
   {
@@ -186,7 +187,7 @@
  "idx": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-03-27 13:10:00.948216",
+ "modified": "2024-08-01 08:34:22.915353",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Control Panel",

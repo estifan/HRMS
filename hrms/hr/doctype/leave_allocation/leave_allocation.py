@@ -270,6 +270,7 @@ class LeaveAllocation(Document):
 				"carry_forwarded_leaves_count",
 				self.unused_leaves,
 			)
+		self.carry_forward_previous = self.unused_leaves
 
 	def validate_total_leaves_allocated(self):
 		# Adding a day to include To Date in the difference

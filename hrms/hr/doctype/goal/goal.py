@@ -158,23 +158,23 @@ class Goal(NestedSet):
 
 @frappe.whitelist()
 def update_goal_progress(goal_name):
+    frappe.logger().info(f"Updating progress for goal: {goal_name}")
     goal_doc = frappe.get_doc("Goal", goal_name)
-    # Fetch linked tasks for the goal
     tasks = frappe.get_all("Task", filters={"goal": goal_doc.name}, fields=["progress"])
 
     if not tasks:
         goal_doc.progress = 0
     else:
-        # Calculate the average progress of linked tasks
         total_progress = sum(task.progress or 0 for task in tasks)
         average_progress = total_progress / len(tasks)
-        # Update the goal's progress field
         goal_doc.progress = average_progress
 
     goal_doc.flags.ignore_mandatory = True
     goal_doc.save()
+    frappe.logger().info(f"Updated progress for goal: {goal_name}, progress: {goal_doc.progress}")
 
     return goal_doc.progress
+
 
 @frappe.whitelist()
 def get_children(doctype: str, parent: str, is_root: bool = False, **filters) -> list[dict]:

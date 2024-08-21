@@ -11,6 +11,8 @@
   "is_group",
   "parent_goal",
   "column_break_tyox",
+  "department",
+  "designation",
   "progress",
   "status",
   "section_break_nf0j",
@@ -129,10 +131,13 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "employee",
    "fieldname": "kra",
    "fieldtype": "Link",
    "label": "KRA",
-   "options": "KRA"
+   "mandatory_depends_on": "eval: !doc.parent_goal && doc.appraisal_cycle",
+   "options": "KRA",
+   "read_only_depends_on": "eval: doc.parent_goal"
   },
   {
    "allow_in_quick_entry": 1,
@@ -205,6 +210,22 @@
    "label": "Company",
    "options": "Company",
    "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fetch_if_empty": 1,
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -215,7 +236,7 @@
    "link_fieldname": "goal"
   }
  ],
- "modified": "2024-07-22 08:21:40.747255",
+ "modified": "2024-08-07 16:33:04.851981",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Goal",

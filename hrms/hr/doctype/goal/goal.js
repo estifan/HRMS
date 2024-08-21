@@ -32,7 +32,7 @@ frappe.ui.form.on("Goal", {
                 query: "hrms.hr.doctype.appraisal.appraisal.get_kras_for_employee",
                 filters: {
                     // employee: frm.doc.employee,
-                    appraisal_cycle: frm.doc.appraisal_cycle,
+                    //appraisal_cycle: frm.doc.appraisal_cycle,
                 }
             };
         });

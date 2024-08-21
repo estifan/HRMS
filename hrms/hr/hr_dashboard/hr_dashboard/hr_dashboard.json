@@ -1,0 +1,29 @@
+{
+ "cards": [],
+ "charts": [
+  {
+   "chart": "Department Wise Employee Count",
+   "width": "Half"
+  },
+  {
+   "chart": "Attendance Count",
+   "width": "Half"
+  },
+  {
+   "chart": "Employees on Leave this Month",
+   "width": "Half"
+  }
+ ],
+ "creation": "2024-08-02 21:45:50.331320",
+ "dashboard_name": "HR Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2024-08-03 08:39:43.644210",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "HR Dashboard",
+ "owner": "Administrator"
+}

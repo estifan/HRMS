@@ -105,12 +105,21 @@ class LeavePolicyAssignment(Document):
 			return leave_allocations
 
 	def create_leave_allocation(self, annual_allocation, leave_details, date_of_joining):
-		# Creates leave allocation for the given employee in the provided leave period
+		
 		carry_forward = self.carry_forward
 		if self.carry_forward and not leave_details.is_carry_forward:
 			carry_forward = 0
 
 		new_leaves_allocated = self.get_new_leaves(annual_allocation, leave_details, date_of_joining)
+
+		
+		if leave_details.biannual_increment:
+			
+			leave_period_start_date = getdate(self.effective_from)
+			years_since_joining = date_diff(leave_period_start_date, getdate(date_of_joining)) // 365
+			
+			increments = years_since_joining // 2
+			new_leaves_allocated += increments
 
 		allocation = frappe.get_doc(
 			dict(

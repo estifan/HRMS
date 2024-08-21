@@ -235,10 +235,7 @@ class SalarySlip(TransactionBase):
 		revert_series_if_last(self.series, self.name)
 
 	def get_status(self):
-		status = "Pending"
-		if self.docstatus == 0 and self.workflow_status == "Pending":
-			status = "Pending"
-		elif self.docstatus == 0 and self.workflow_status == "Draft":
+		if self.docstatus == 0:
 			status = "Draft"
 		elif self.docstatus == 1:
 			status = "Submitted"
